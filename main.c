@@ -15,17 +15,20 @@
 
 void control() {
 
-	int HORRIZONTAL_AXIS = 1;
-	int VERTICAL_AXIS = 0;
+	int HORRIZONTAL_AXIS = 0;
+	int VERTICAL_AXIS = 1;
 
 	//Get the data
 	int leftStick[] = {vexRT[Ch4], vexRT[Ch3]};
 	int rightStick[] = {vexRT[Ch1], vexRT[Ch2]};
 
-	motor[leftMotor] = leftStick[HORRIZONTAL_AXIS];
-	motor[rightMotor] = rightStick[HORRIZONTAL_AXIS];
+	motor[leftMotor] = leftStick[VERTICAL_AXIS];
+	motor[rightMotor] = rightStick[VERTICAL_AXIS];
 
-
+	//motor[armMotor] = leftStick[HORRIZONTAL_AXIS];
+	//motor[clawMotor] = rightStick[HORRIZONTAL_AXIS];
+	motor[armMotor] = (vexRT[Btn5D] - vexRT[Btn5U]) * 127;
+	motor[clawMotor] = (vexRT[Btn6D] - vexRT[Btn6U]) * 127;
 }
 
 task main()
